@@ -12,7 +12,7 @@
     "optionalPaths": [
         ".github/*"
     ],
-    "image": "kdedev",
+    "image": "dshatz/kdedev",
     "workspaceMount": "source=/data/kde/,target=/home/neon/kde,type=bind,consistency=cached",
     "workspaceFolder": "/home/neon",
     "mounts": [

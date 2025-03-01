@@ -16,7 +16,10 @@ jobs:
       with:
         username: ${{ vars.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Make image tag
+      id: tag-name
+      run: echo "DT=$(date +%s)" >> "$GITHUB_OUTPUT"
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag dshatz/kdedev:$(date +%s)
+      run: docker build . --file Dockerfile --tag dshatz/kdedev:${{ steps.tag-name.outputs.DT }}
     - name: Push to DockerHub
-      run: docker push dshatz/kdedev
+      run: docker push dshatz/kdedev:${{ steps.tag-name.outputs.DT }}
