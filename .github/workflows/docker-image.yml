@@ -20,6 +20,6 @@ jobs:
       id: tag-name
       run: echo "DT=$(date +%s)" >> "$GITHUB_OUTPUT"
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag dshatz/kdedev:${{ steps.tag-name.outputs.DT }}
+      run: docker build . --file Dockerfile --tag dshatz/kdedev:${{ steps.tag-name.outputs.DT }} --tag dshatz/kdedev:latest
     - name: Push to DockerHub
-      run: docker push dshatz/kdedev:${{ steps.tag-name.outputs.DT }}
+      run: docker push dshatz/kdedev:${{ steps.tag-name.outputs.DT }} && docker push dshatz/kdedev:latest
