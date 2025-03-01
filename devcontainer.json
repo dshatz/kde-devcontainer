@@ -1,0 +1,22 @@
+{
+    "id": "kdeneon",
+    "version": "1.0.0",
+    "name": "KDE Development Container",
+    "description": "KDE Development Container based on KDE Neon docker image",
+    "documentationURL": "https://github.com/devcontainers/templates/tree/main/src/ubuntu",
+    "publisher": "Dev Container Spec Maintainers",
+    "licenseURL": "https://github.com/devcontainers/templates/blob/main/LICENSE",
+    "platforms": ["Any"],
+    "containerUser": "neon",
+    "remoteUser": "neon",
+    "optionalPaths": [
+        ".github/*"
+    ],
+    "image": "kdedev",
+    "workspaceMount": "source=/data/kde/,target=/home/neon/kde,type=bind,consistency=cached",
+    "workspaceFolder": "/home/neon",
+    "mounts": [
+        "type=bind,source=${localEnv:HOME}/.config/sops-nix/secrets/sshkeys,target=/home/neon/keys,readonly",
+    ]
+
+}
