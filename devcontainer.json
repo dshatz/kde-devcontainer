@@ -13,9 +13,14 @@
         ".github/*"
     ],
     "image": "dshatz/kdedev",
-    "workspaceMount": "source=/data/kde/,target=/home/neon/kde,type=bind,consistency=cached",
     "mounts": [
         "type=bind,source=${localEnv:HOME}/.config/sops-nix/secrets/sshkeys,target=/home/neon/keys,readonly",
-    ]
+        "source=/data/kde/,target=/home/neon/kde,type=bind,consistency=cached",
+        "source=${localEnv:XDG_RUNTIME_DIR}/${localEnv:WAYLAND_DISPLAY},target=/tmp/${localEnv:WAYLAND_DISPLAY},type=bind"
+    ],
+    "containerEnv": {
+        "XDG_RUNTIME_DIR": "/tmp",
+        "WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
+    }
 
 }
